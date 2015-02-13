@@ -1,10 +1,10 @@
 
-## This program provides a method to compute the inverse of a matrix,
+## This program provides the ability to compute the inverse of a matrix,
 ## using cached results if available.
 
 
-## makeCacheMatrix converts an input matrix into a "cache-ready"
-## object including getter and setter functions.
+## makeCacheMatrix converts an input matrix into a cache-ready closure
+## including getter and setter functions.
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -21,7 +21,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## cacheSolve takes the object created above as input, and if
+## cacheSolve takes the closure created above as input, and if
 ## the inverse is cached, gets that, otherwise calculates the
 ## inverse and sets it into cache.
 
@@ -39,5 +39,7 @@ cacheSolve <- function(x, ...) {
 
 
 # test
-# cacheSolve(makeCacheMatrix(matrix(1:4, 2, 2)))
+# m <- matrix(runif(1000000), 1000, 1000)
+# mClosure <- makeCacheMatrix(m)
+# cacheSolve(mClosure) # first run is slower than subsequent runs: it works
 
